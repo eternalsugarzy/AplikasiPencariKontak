@@ -35,21 +35,16 @@ public class AplikasiPencariKontak extends javax.swing.JFrame {
 public class DatabaseHelper {
     public Connection connect() {
         Connection conn = null;
-        try {
-            // Inisialisasi driver JDBC
+        try{
             Class.forName("org.sqlite.JDBC");
-            
-            // Path ke database SQLite
-            conn = DriverManager.getConnection("jdbc:sqlite:D:/Data's (D:)/Cooleyeah!/Semester 5/PBO 2/kontak.db");
-            System.out.println("Koneksi ke database berhasil.");
-        } catch (ClassNotFoundException e) {
-            System.out.println("SQLite JDBC Driver tidak ditemukan. Tambahkan ke classpath.");
-            e.printStackTrace();
-        } catch (SQLException e) {
-            System.out.println("Koneksi ke database gagal.");
-            e.printStackTrace();
-        }
-        return conn;
+            Connection con = DriverManager.getConnection("jdbc:sqlite:kontak.sqlite");
+            System.out.println("Connect Berhasil");
+                     
+            return con;
+           }catch (Exception e){
+            System.out.println("Connect Gagal"+e);
+            return null;
+           }
     }
 }
 
